@@ -12,10 +12,11 @@ function TodoForm({ addTodo }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} data-testid="todo-form">
       <input
         type="text"
         className="input"
+        data-testid="input-form"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
