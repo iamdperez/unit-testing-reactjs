@@ -1,14 +1,17 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from './test.utils';
 import Todo from '../componets/ToDo/Todo';
 
 const todo = {
   text: 'Obtencion de datos',
   isCompleted: false,
+  id: 'uis343',
 };
 
 describe('<Todo />', () => {
   beforeEach(() => {
-    render(<Todo index={0} todo={todo} />);
+    render(<Todo todo={todo} />, {
+      initialState: { todos: { todos: [todo] } },
+    });
   });
 
   afterEach(cleanup);
