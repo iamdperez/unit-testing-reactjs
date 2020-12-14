@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { addTodo } from '../../redux/actions/todo.actions';
 import './TodoForm.css';
 
-function TodoForm({ addTodo }) {
+function TodoForm() {
   const [value, setValue] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
-    addTodo(value);
+    const todo = {
+      id: uuidv4(),
+      text: value,
+      isCompleted: false,
+    };
+    dispatch(addTodo(todo));
     setValue('');
   };
 

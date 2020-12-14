@@ -1,7 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  markTodoAsCompleted,
+  removeTodo,
+} from '../../redux/actions/todo.actions';
 import './Todo.css';
 
-function Todo({ todo, index, completeTodo, removeTodo }) {
+function Todo({ todo }) {
+  const dispatch = useDispatch();
   return (
     <div
       className="todo"
@@ -13,12 +19,15 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
       {todo.text}
       <div>
         <button
-          onClick={() => completeTodo(index)}
+          onClick={() => dispatch(markTodoAsCompleted(todo.id))}
           data-testid="complete-button"
         >
           Complete
         </button>
-        <button onClick={() => removeTodo(index)} data-testid="remove-todo">
+        <button
+          onClick={() => dispatch(removeTodo(todo.id))}
+          data-testid="remove-todo"
+        >
           x
         </button>
       </div>
