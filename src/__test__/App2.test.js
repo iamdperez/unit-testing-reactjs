@@ -1,5 +1,11 @@
-import { act, cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import App from '../App';
+
+const mockFormat = jest.fn();
+
+jest.mock('moment', () => () => ({
+  format: mockFormat,
+}));
 
 describe('<App 2/>', () => {
   beforeEach(() => {
@@ -16,5 +22,9 @@ describe('<App 2/>', () => {
   it('todo-list should be in the document', () => {
     const todoList = screen.getByTestId('todo-list');
     expect(todoList).toBeInTheDocument();
+  });
+
+  it('moment() to be called', () => {
+    expect(mockFormat).toBeCalled();
   });
 });

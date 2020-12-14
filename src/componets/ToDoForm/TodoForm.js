@@ -18,6 +18,7 @@ function TodoForm({ addTodo }) {
         className="input"
         data-testid="input-form"
         value={value}
+        placeholder="Add new todo..."
         onChange={(e) => setValue(e.target.value)}
       />
     </form>

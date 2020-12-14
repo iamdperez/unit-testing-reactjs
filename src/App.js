@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useState } from 'react';
 import './App.css';
 import Todo from './componets/ToDo/Todo';
@@ -41,6 +42,17 @@ function App() {
           />
         ))}
         <TodoForm addTodo={addTodo} />
+        <div
+          style={{
+            textAlign: 'center',
+            margin: 5,
+            padding: 5,
+            opacity: 0.5,
+            fontSize: 12,
+          }}
+        >
+          {moment().format('LT')}
+        </div>
       </div>
     </div>
   );
